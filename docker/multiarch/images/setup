@@ -1,0 +1,8 @@
+
+# bitnami-docker-postgresql-repmgr
+* git clone https://github.com/bitnami/bitnami-docker-postgresql-repmgr.git
+* docker buildx build --load --platform linux/amd64 -t 192.168.0.203:5000/bitnami/postgresql-repmgr:14 ./bitnami-docker-postgresql-repmgr/14/debian-10/
+* remove dockerfile amd64 + checksums
+* docker buildx build --load --platform linux/arm64 -t 192.168.0.203:5000/bitnami/postgresql-repmgr:14 ./bitnami-docker-postgresql-repmgr/14/debian-10/
+* docker push 192.168.0.203:5000/bitnami/postgresql-repmgr:14
+* sudo rm -R ./bitnami-docker-postgresql-repmgr

@@ -1,0 +1,6 @@
+# Example buildkitd.toml configuration for a local insecure registry
+
+debug = true
+[registry."192.168.10.200:5000"]
+    http = true
+    insecure = true
