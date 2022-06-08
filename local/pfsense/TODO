@@ -1,0 +1,88 @@
+
+
+
+DRIVERS
+copy: if_atlantic to /home/drivers
+run: kldload if_atlantic
+add to /boot/loader.conf: if_atlantic_load="yes"
+
+
+HA_PROXY: see pics
+
+GO_DADDY
+key: eoMDnSfuQXtN_NUnjqQyfeZJ924N9TJF7eL
+
+
+LE_Cert
+
+email: ole.klokkhammer@outlook.com
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIJKQIBAAKCAgEAzsabUtkMmAvJeRCc60QXxeWsbUrO97sEWnwLDBpvL186DBgb
+/pxwNgCzBoE4liYCtiHSmAwLeVS8/PjThI+VWGN1amLDmAcYwpfO88wWSzagx9ie
+/DQAO6pQL6haLn/KnDPaVqENxnziSfBomrSCkcU5PVRiZDzRJBOFszRkbpLc49k1
+SHc5zvbUOafHOhsiZ8d/AwsyR1t7WUeE03HOFQU5ZomgOhrCLYsyO7OZihfxGPwp
+Iu8ZNqVkxtEoJ/oEYyzQg1ZZVM+iomeny+/+nZ8Qj6I0vbM1vrPLJVnNlU3gDyZR
+QHnXZ3/FUHWhfMb3Rc8AuJnciwQTtuprbKA3ra/StapNxPIK/ZFTrM7TzxEgU2w9
+JQPla+yApy2LjeNDutqkeJ4U3Wx2m3yf1wK3x3AgiqBUAMv5RkzZ45d/hMYoQSft
+XVulxe2BKPoBFmdqgxhaoFmkis/eg++HsbFhbd4p1tMSL8OiCuokvwgF5yK0MepM
+R9X4NIN+v5osntpMQdqTpo+J6OiRKURk4ElBNA9mvvcbOPpTtbHAJdOvZRMsckGY
+m1O8RxPh3X9hZcgkZoJBoOUXZJZLCGpSX65j58dowVuOzSqfzYXr1aDwN+e9qpeW
+uilpRyGLShpGl/4/KdxTCTjsGix6ney1R4BlWHN2Dd9FI5R3iLrVpu0Fp/UCAwEA
+AQKCAgBbAXZjJDwyvx1RN0qZEUMVSlx1TbOBvMHRwT5reUbuJo85u3K2wMtyOSSR
+/FWXX+tZldFGMibqo6z5+dm+QiOM31lSFV3Yj2cKXh4rlutI9yYUTvbKMWjY2cCo
++QOX646U6Q1zizaw4U4HFNQ1IrVEyvTCVV1omIvDwQPbN3fsYp7teS/GURMUT/Zf
+2cQJgt/FpTv1bvwWA+FqDdwb47676ay1wGTQre5AdT8Kn6U37gmi4XiJc4o5Ttnn
+1y5BSfycWaD77QksFqaRq+ViEKKTZOq5DL8Brto8sIz8R2YADGJMyKSCKB3x435I
+Rz1n2XoDM3QxyyYR2R2EJ/BXwrw93cfCuZDESEZzARIgZkjFTWfS5xt3LpSpu+pJ
+0JCSfMDzsL33V5jhBU2aPDY+zSJgHZJP8Zn/7KPZQjBjXSChSnklmOldyTzdS1+m
+aYezD7lyCVlrBIWk+z8GDYuRIEmCmIUikC87orl6TKYdy7uq/P1aXTgdBPI5ljfc
+Bb1QWAh7K8cb+OQCsnkxeRdDkqC/h7hmbTTGYfe6j+p/PokwEpBTgrqTnVP/2ONa
+pH4bPnrYKd93/E811RI9F0oJQPkvvREtIufWbgtcWeV8j4K1PfFZ/sgW1MmLSJwS
+K5vw2kLIPmtM/jt92PqmjYq4R6Sd+YuD2qPK5LDt6L7bj5hRkQKCAQEA/wIxpkQg
+bFLwqqE8rFkY2WEdl4OOpgUudeCeogAh+JVWpOxxQqScEfF9Sn3Xn6ZJZHypaR/2
+6JtjvV1wI/MZdX1Iw4KKqFb9Eb1JMY7r9QtmTiSv7MdJIOCVl06J179R+SxwzMNX
+ElP3T8mvjcFFMV8hiI57U3/BDfi397ftOLYjMlxHQi1wfqRaxYXAzu4djIiD+PGh
+CUgOdrdxhDez+yN+rLRRzUBMnNNppYq9KAZzcdyH1xzQUNz8v+o5FI0JCn6nYun+
+2hnf/1HM9Nd05NQzGLpcL/jaGjietrFv9/CmNtf9RRo6pzLZ9BOJz1wW1hWO4G0l
+y0mJSYjBg6RlzwKCAQEAz5RoUB8axJpgsENyptFfycoSKV/kBoIxvij7a3c6zn+G
+mHgE5MqHl2Gn/u+GA3PtKkGZQVbjKxTXiXjH0xUmGHKX89D4zkPmEu0BG7abasUO
+fllm1yY745G/OrURKoRwlSZW9drdgN8OC75D010IiSIE0jAFsV/ckxVUKUcppjG6
+pcgvMqoUdJylJtt13wn4uLBO5RH0CwybaWzBJxlFR1G19a9wwVA69ox8g729NgVA
+qd7QvYo75+s0OueqrLRSKxEiIsZzBiHK+MsKFV1X+Bi4NpjdYX19YCcn3AUWgMEE
+7nmz7lkq/gQRk0y8ErE782s9lTr9rNDRvM4MFhhK+wKCAQEA0zvvAqomLXTatIzR
+JHa9VbvTdmFcdXuPS8efv9PaT/7sgbr16t1OBrMCNQVe6nklDF8TOehnb7DgAsl2
+jeDecusvrfvhfaZpBRvFmI6qOBaUTSCotbsygVBnuakuF4/8iCne2k7pPl5dWzNW
+/1ZcSZRiw6o60CTgNwGS6ljp4PNG3n1/7XqUV+Mu6bVszDyEL5gZscn9uiF9EavN
+FVfK97okQU0xAZNEoxegyKbPH2uQj3287FyK1qDnoNWVKMfW+GGHqDDqkaGjYexR
+mXMr+i0oklA08uvxRo0mM3FxrXEjTgTGYEpk0YEW986DdkfzBq1e59qh1u34Efh9
+S92PEwKCAQBvayBGiTuL9bUaR0m+ArogjMcM0DyLxcw/Xq388+Vru4WaRymRSKhY
++AD9VMGhDtNpEAbbzHBoymoajurrAPoOu0uWgj9aL5XJ6M7kejKXr6fk58XMi+gv
+cSass03AfZAUbpzUoCKurotSgFDVnaUcPldKHp6fo224wQUIlvrjCuQ9YeL7ldEe
++omm/rsY+bg4IeJnECjm2WB9yPMwMl8+NbyuX/nsuUy805FuASUTXuRjiYaPhig7
+hsLlLz4sLym/lhW1hsFstCzHN+x0pUK3l0UhgRGq53mpZ7r8XPrEJ1anTknnEJOD
+/tkUMGbuvZUJRjGq7RwGa5t4dTyFi4qLAoIBAQD3ptAUu8eHqca84ryHPrmBKCwJ
+vc80xfy5HTRJ/PvzVPU/On6TEiHQTdhuMCTSkPeOEmbweR1vyyR2j2KlMvIDB437
+xW4YUpcIMR6dUlr7yPE+av1ZGvqwQ2kMxRV8saPYW6sc3dMc4diVAKH0k+Wo2Odj
+YbNnpzYMDpUMxlsqySW++ihZhwhytTSP6/K8nvnwxQWdBCl2P1Hstc7ao82rrKQg
+0XSuPVfWuF0PP78zQcNk6qul1H/etNNcYnI+osRXmxPokLmGQ7qbHAQbbQIImSNo
+3o2iiuOI95NCkbJc6zHUwpCui+xgvv8kzk2KfiNl+wX6FBpYfwWHTm03jTzm
+-----END RSA PRIVATE KEY-----
+
+
+DNS_RESOLVER:
+
+server:
+    access-control-view: 192.168.10.37/24 bypass
+    access-control-view: 192.168.10.0/24 dnsbl
+view:
+    name: "bypass"
+    view-first: yes
+view:
+    name: "dnsbl"
+    view-first: yes
+    include: /var/unbound/pfb_dnsbl.*conf
+
+
+DYNAMIC_DNS:
+username: eoMDnSfuQXtN_NUnjqQyfeZJ924N9TJF7eL
