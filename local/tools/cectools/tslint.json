@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "tslint-eslint-rules",
+    "tslint-clean-code"
+  ],
+  "rules": {
+    "curly": true,
+    "triple-equals": true,
+    "deprecation": true
+  }
+}

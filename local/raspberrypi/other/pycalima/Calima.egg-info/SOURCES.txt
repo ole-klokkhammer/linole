@@ -1,0 +1,10 @@
+setup.py
+Calima.egg-info/PKG-INFO
+Calima.egg-info/SOURCES.txt
+Calima.egg-info/dependency_links.txt
+Calima.egg-info/entry_points.txt
+Calima.egg-info/requires.txt
+Calima.egg-info/top_level.txt
+pycalima/Calima.py
+pycalima/__init__.py
+pycalima/test.py

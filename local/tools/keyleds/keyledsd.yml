@@ -1,0 +1,43 @@
+# https://github.com/keyleds/keyleds/wiki/Configuration-File
+# https://github.com/keyleds/keyleds/blob/master/keyledsd/keyledsd.conf.sample
+
+plugins: [lua]
+
+groups:
+  functions: [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12]
+  functions-extra: [ESC, sysrq, scrolllock, pause, insert, home, pageup, delete, end, pagedown]
+  alpha: [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z, æ, ø, å]
+  modifiers: [lctrl, rctrl, lshift, rshift, lmeta, lalt, ralt, capslock, fn, compose]
+  arrows: [left, right, up, down]
+
+effects:
+  keyleds-default:
+    plugins:
+      - effect: fill
+        color: gray
+  terminal:
+    plugins:
+      - effect: fill
+        color: gray
+        modifiers: gray
+        functions: black
+        functions-extra: black
+  webstorm:
+    plugins:
+      - effect: fill
+        color: gray
+        functions: gray
+        functions-extra: gray
+
+profiles:
+  __default__:
+    effect: keyleds-default
+  google-chrome:
+    lookup: { class: "Google-chrome" }
+    effect: keyleds-default
+  terminal:
+    lookup: { class: Xfce4-terminal }
+    effect: keyleds-default
+  webstorm:
+    lookup: { class: jetbrains-webstorm }
+    effect: keyleds-default

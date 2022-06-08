@@ -1,0 +1,2 @@
+# 
+* docker run -d --network host --restart unless-stopped --name roon-extension-manager --hostname Docker -v roon-extensions:/home/ubuntu/.RoonExtensions/lib -v /var/run/docker.sock:/var/run/docker.sock -e "TZ=Europe/Oslo" theappgineer/roon-extension-manager:latest

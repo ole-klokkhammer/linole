@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: Calima
+Version: 2.0.0
+Summary: Python interface for Pax Calima Fan
+Home-page: https://github.com/patricke94/pycalima
+Author: Patrick Wadström
+Author-email: patrick@weblab.se
+License: Apache 2.0
+Description: test
+Keywords: pax calima fan bluetooth ble
+Platform: UNKNOWN

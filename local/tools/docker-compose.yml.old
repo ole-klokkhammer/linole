@@ -1,0 +1,185 @@
+version: '3.9'
+
+services:
+
+  bt2mqtt: # HOST
+    image: 192.168.10.34:5000/linole/bt2mqtt
+    container_name: bt2mqtt
+    env_file:
+      - ./bt2mqtt/.env
+    volumes:
+      - ./bt2mqtt/config.yaml:/config.yaml
+      - ./bt2mqtt/logger.yaml:/logger.yaml
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    network_mode: host
+    restart: unless-stopped
+    depends_on:
+      - mqttbroker
+
+  mqttbroker:
+    image: eclipse-mosquitto:2.0.10
+    container_name: mqttbroker
+    env_file:
+      - ./mosquitto/.env
+    volumes:
+      - mosquitto:/data
+      - ./mosquitto/config:/mosquitto/config
+    networks:
+      - nas
+    ports:
+      - 6107:1883
+    restart: unless-stopped
+
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall
+    env_file:
+      - ./heimdall/.env
+    volumes:
+      - heimdall:/config
+    ports:
+      - 1000:80
+    networks:
+      - nas
+    restart: unless-stopped
+
+  zwavejs2mqtt:
+    image: zwavejs/zwavejs2mqtt
+    container_name: zwavejs2mqtt
+    env_file:
+      - ./zwavejs2mqtt/.env
+    ports:
+      - 8091:8091 # port for web interface
+      - 3000:3000 # port for zwave-js websocket server
+    tty: true
+    stop_signal: SIGINT
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"
+    networks:
+      - nas
+    volumes:
+      - zwavejs2mqtt:/usr/src/app/store
+    depends_on:
+      - mqttbroker
+    restart: unless-stopped
+
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    container_name: zigbee2mqtt
+    env_file:
+      - ./zigbee2mqtt/.env
+    volumes:
+      - zigbee2mqtt:/app/data
+      - ./zigbee2mqtt/configuration.yaml:/app/data/configuration.yaml
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    networks:
+      - nas
+    ports:
+      - 8080:8080
+    depends_on:
+      - mqttbroker
+    restart: unless-stopped
+
+  dyson2mqtt:
+    image: 192.168.10.34:5000/linole/dyson2mqtt:1.0.8
+    container_name: dyson2mqtt
+    env_file:
+      - ./dyson2mqtt/.env
+    networks:
+      - nas
+    depends_on:
+      - mqttbroker
+    restart: unless-stopped
+
+  elasticsearch:
+    image: elasticsearch:7.13.3
+    container_name: elasticsearch
+    environment:
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - nas
+  #
+  #  elasticsearch-web:
+  #    image: lmenezes/cerebro
+  #    container_name: elasticsearch-web
+  #    ports:
+  #      - 9000:9000
+  #    networks:
+  #      - nas
+  #    restart: unless-stopped
+  #    depends_on:
+  #      - elasticsearch
+
+  logstash:
+    image: logstash:7.13.3
+    container_name: logstash
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - logstash-settings:/usr/share/logstash/config/
+      - logstash-pipeline:/usr/share/logstash/pipeline/
+    networks:
+      - nas
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:7.13.3
+    container_name: kibana
+    volumes:
+      - logstash-settings:/usr/share/logstash/config/
+      - logstash-pipeline:/usr/share/logstash/pipeline/
+    ports:
+      - 5601:5601
+    networks:
+      - nas
+    depends_on:
+      - elasticsearch
+# MinIO https://min.io/
+
+  places:
+    image: 192.168.10.200:5000/linole/places
+    container_name: places
+    env_file:
+      - ./places/.env
+    networks:
+      - nas
+    depends_on:
+      - mqttbroker
+    restart: unless-stopped
+
+volumes:
+  mosquitto:
+    name: mosquitto
+  emqx-data:
+    name: emqx-data
+  emqx-etc:
+    name: emqx-etc
+  emqx-log:
+    name: emqx-log
+  zwavejs2mqtt:
+    name: zwavejs2mqtt
+  zigbee2mqtt:
+    name: zigbee2mqtt
+  heimdall:
+    name: heimdall
+  elasticsearch-data:
+    name: elasticsearch-data
+  logstash-settings:
+    name: logstash-settings
+  logstash-pipeline:
+    name: logstash-pipeline
+
+networks:
+  nas:
+    name: nas
+    driver: bridge

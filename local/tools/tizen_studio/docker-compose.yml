@@ -1,0 +1,14 @@
+version: "3"
+services:
+  tizen-studio-ide:
+    image: ubergeek77/tizen-studio-ide:2.5
+    container_name: tizen-studio-ide
+    environment:
+      - DISPLAY=$DISPLAY
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./tizen/workspace:/home/tizen/workspace
+      - ./tizen/extensions:/home/tizen/extensions
+      - ./tizen/certificates:/home/tizen/certificates
+    network_mode: "host"
+    restart: unless-stopped

@@ -1,0 +1,26 @@
+https://github.com/jonasmalacofilho/liquidctl/pull/213
+
+
+@BangerTech I just quickly made a couple changes so it should detect your device but Im not certain. let me know if any of the steps do or dont work.
+
+But to test you will need to clone the repository and run it: (note some of the flag names that I currently have dont make much sense)
+
+$ git clone https://github.com/MarshallAsch/liquidctl.git
+$ cd liquidctl
+$ git checkout commander-pro
+$ sudo python3 -m liquidctl.cli list
+   (should see your device here, if not stop)
+$ sudo python3 -m liquidctl.cli -m node set led1 color fixed ff0000 --led-type 1 
+    (should set the first led on the first fan to red everything else should be off)
+$ sudo python3 -m liquidctl.cli -m node set led2 color fixed 00ff00 --led-type 1 
+    (should set the first led on the first fan to red and the first led on fan2 should be green)
+That is the behaviour I am currently expecting to occur and It assumes that you have the following setup
+
+lighting node pro (channel 1) -> rgb hub -> LL fan
+                             -> LL fan
+If instead the first led is red and the second is green then my understanding of one of the fields is a little off (and I know how to fix it)
+and if you could also test.
+
+sudo python3 -m liquidctl.cli -m node set led color clear
+sudo python3 -m liquidctl.cli -m node set led1 color rainbow --led-type 16
+That should set the first fan to a rainbow effect (all of the LED's should not be the same color)
