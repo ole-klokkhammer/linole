@@ -1,0 +1,11 @@
+
+**/.gradle
+**/.idea
+**/build
+*.env
+*/secrets.yaml
+*.log
+*.sqlite3
+commands
+
+exposed_ports
