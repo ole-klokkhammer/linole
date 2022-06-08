@@ -1,0 +1,36 @@
+{
+  "name": "entur",
+  "module": "entur-card.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "rollup -c --watch",
+    "build": "npm run lint && npm run rollup",
+    "lint": "eslint src/*.ts",
+    "rollup": "rollup -c"
+  },
+  "dependencies": {
+    "custom-card-helpers": "^1.5.0",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@rollup/plugin-json": "^4.0.2",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "prettier": "^2.0.2",
+    "rollup": "^2.1.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^3.8.3"
+  }
+}

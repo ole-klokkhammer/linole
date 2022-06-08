@@ -1,0 +1,17 @@
+{
+  "msg": "ENVIRONMENTAL-CURRENT-SENSOR-DATA",
+  "time": "2022-02-13T13:12:18.000Z",
+  "data": {
+    "tact": "2929",
+    "hact": "0048",
+    "pm25": "0002",
+    "pm10": "0001",
+    "va10": "0008",
+    "noxl": "0003",
+    "p25r": "0003",
+    "p10r": "0003",
+    "hcho": "NONE",
+    "hchr": "NONE",
+    "sltm": "OFF"
+  }
+}

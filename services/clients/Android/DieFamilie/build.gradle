@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        compileSdkVersion = 31
+        minSdkVersion = 21
+        targetSdkVersion = 31
+
+        kotlinVersion = "1.6.10"
+        hiltVersion = "2.38.1"
+        coroutinesVersion = "1.5.2"
+    }
+    repositories {
+        mavenCentral()
+        google()
+        maven {
+            url "https://repo.eclipse.org/content/repositories/paho-snapshots/"
+        }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${this.ext.kotlinVersion}"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0-rc01"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:${this.ext.hiltVersion}"
+    }
+}
+
+plugins {
+    id 'com.diffplug.spotless' version '5.11.1'
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    apply plugin: 'com.diffplug.spotless'
+    spotless {
+        kotlin {
+            target '**/*.kt'
+            targetExclude("$buildDir/**/*.kt")
+            targetExclude('bin/**/*.kt')
+
+            ktlint(Versions.ktlint)
+            licenseHeaderFile rootProject.file('spotless/copyright.kt')
+        }
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            // Treat all Kotlin warnings as errors
+            allWarningsAsErrors = false
+
+            freeCompilerArgs += '-Xopt-in=kotlin.RequiresOptIn'
+
+            // Enable experimental coroutines APIs, including Flow
+            freeCompilerArgs += '-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi'
+            freeCompilerArgs += '-Xopt-in=kotlinx.coroutines.FlowPreview'
+            freeCompilerArgs += '-Xopt-in=kotlin.Experimental'
+
+            // Set JVM target to 1.8
+            jvmTarget = "1.8"
+        }
+    }
+}
