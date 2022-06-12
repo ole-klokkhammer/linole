@@ -19,6 +19,15 @@
 * helm install timescaledb ./timescaledb-kubernetes/charts/timescaledb-single -f values.yaml
 * helm upgrade timescaledb ./timescaledb-kubernetes/charts/timescaledb-single -f values.yaml
 
+## Accessing database locally
+* Get the password for access node
+* PGPASSWORD_POSTGRES=$(kubectl get secret --namespace default timescale-db-timescaledb-access -o jsonpath="{.data.password-superuser}" | base64 --decode)
+* Get the name of the access node pod
+* ACCESS_POD=$(kubectl get pod -o name -n default -l role=master)
+* Start a port forward from the access node
+* kubectl port-forward $ACCESS_POD 5432:5432 -n=default
+
+
 # creating stuff
 
 * CREATE DATABASE sysdb;

@@ -44,14 +44,14 @@ class PushService(
         humidifierListener = launch {
             launch(this@launch.coroutineContext) {
                 humidifier.environmentSensorStatusFlow().collect {
-                    publishEnvironmentData("dyson2mqtt/${humidifier.deviceId()}", it?.data)
+                    publishEnvironmentData("dyson/${humidifier.deviceId()}", it?.data)
                 }
             }
             launch(this@launch.coroutineContext) {
                 humidifier.environmentStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${humidifier.deviceId()}/current", it1) }
+                            ?.let { it1 -> publish("dyson/${humidifier.deviceId()}/current", it1) }
                     }
                 }
             }
@@ -59,7 +59,7 @@ class PushService(
                 humidifier.faultStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${humidifier.deviceId()}/faults", it1) }
+                            ?.let { it1 -> publish("dyson/${humidifier.deviceId()}/faults", it1) }
                     }
                 }
             }
@@ -67,7 +67,7 @@ class PushService(
                 humidifier.softwareStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${humidifier.deviceId()}/software", it1) }
+                            ?.let { it1 -> publish("dyson/${humidifier.deviceId()}/software", it1) }
                     }
                 }
             }
@@ -75,7 +75,7 @@ class PushService(
                 humidifier.connectionStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${humidifier.deviceId()}/connection", it1) }
+                            ?.let { it1 -> publish("dyson/${humidifier.deviceId()}/connection", it1) }
                     }
                 }
             }
@@ -86,14 +86,14 @@ class PushService(
         hotncoolListener = launch {
             launch(this@launch.coroutineContext) {
                 hotncool.environmentSensorStatusFlow().collect {
-                    publishEnvironmentData("dyson2mqtt/${hotncool.deviceId()}", it?.data)
+                    publishEnvironmentData("dyson/${hotncool.deviceId()}", it?.data)
                 }
             }
             launch(this@launch.coroutineContext) {
                 hotncool.environmentStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${hotncool.deviceId()}/current", it1) }
+                            ?.let { it1 -> publish("dyson/${hotncool.deviceId()}/current", it1) }
                     }
                 }
             }
@@ -101,7 +101,7 @@ class PushService(
                 hotncool.faultStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${hotncool.deviceId()}/faults", it1) }
+                            ?.let { it1 -> publish("dyson/${hotncool.deviceId()}/faults", it1) }
                     }
                 }
             }
@@ -109,7 +109,7 @@ class PushService(
                 hotncool.softwareStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${hotncool.deviceId()}/software", it1) }
+                            ?.let { it1 -> publish("dyson/${hotncool.deviceId()}/software", it1) }
                     }
                 }
             }
@@ -117,7 +117,7 @@ class PushService(
                 hotncool.connectionStatusFlow().collect {
                     mqttClient.runCatching {
                         it?.toByteArray()
-                            ?.let { it1 -> publish("dyson2mqtt/${hotncool.deviceId()}/connection", it1) }
+                            ?.let { it1 -> publish("dyson/${hotncool.deviceId()}/connection", it1) }
                     }
                 }
             }

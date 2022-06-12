@@ -7,10 +7,10 @@ data:
   config: |
     address-pools:
     - name: default
-      protocol: layer2
+      protocol: bgp
       addresses:
       - 192.168.0.200-192.168.0.230
     peers:
     - peer-address: 192.168.10.1
-      peer-asn: 64512
-      my-asn: 64513
+      peer-asn: 65505
+      my-asn: 65515

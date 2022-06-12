@@ -26,12 +26,12 @@ def on_message(client, userdata, msg):
             prevSunState = sunState
             if sunState in ['above_horizon']:
                 data = {'scene_recall': DAY}
-                client.publish('zigbee2mqtt/all/set', payload=json.dumps(data), qos=2, retain=True)
-                client.publish('zigbee2mqtt/livingroom/set', payload=json.dumps(data), qos=2, retain=True)
+                client.publish('zigbee/all/set', payload=json.dumps(data), qos=2, retain=True)
+                client.publish('zigbee/livingroom/set', payload=json.dumps(data), qos=2, retain=True)
             elif sunState in [f'below_horizon']:
                 data = {'scene_recall': NIGHT}
-                client.publish('zigbee2mqtt/all/set', payload=json.dumps(data), qos=2, retain=True)
-                client.publish('zigbee2mqtt/livingroom/set', payload=json.dumps(data), qos=2, retain=True)
+                client.publish('zigbee/all/set', payload=json.dumps(data), qos=2, retain=True)
+                client.publish('zigbee/livingroom/set', payload=json.dumps(data), qos=2, retain=True)
             else:
                 print("No match")
     except Exception as e:

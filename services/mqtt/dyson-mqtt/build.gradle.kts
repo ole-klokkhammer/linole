@@ -1,4 +1,3 @@
-import de.fayard.refreshVersions.core.extensions.gradle.passwordCredentials
 
 plugins {
     application
@@ -7,7 +6,7 @@ plugins {
 }
 
 group = "com.linole"
-version = "0.0.1"
+version = "1.0.0"
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
     val isDevelopment: Boolean = project.ext.has("development")
@@ -17,10 +16,11 @@ application {
 repositories {
     mavenCentral()
     maven {
-        url = uri(System.getenv("GITLAB_MAVEN_LINOLE_URL"))
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/ole-klokkhammer/linole")
         credentials {
-            username = System.getenv("GITLAB_MAVEN_LINOLE_USERNAME")
-            password = System.getenv("GITLAB_MAVEN_LINOLE_PASSWORD")
+            username = System.getenv("GITHUB_USERNAME")
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
 }

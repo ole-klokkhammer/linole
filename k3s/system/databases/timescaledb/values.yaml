@@ -5,6 +5,8 @@ replicaCount: 3
 version: 14
 
 patroni:
+  log:
+    level: WARNING
   bootstrap:
     dcs:
       synchronous_mode: true
@@ -17,6 +19,7 @@ patroni:
 
 persistentVolumes:
   data:
+    enabled: true
     size: 100G
     storageClass: local-path
   wal:
@@ -37,6 +40,30 @@ secrets:
   certificateSecretName: "timescaledb-certificate"
   pgbackrestSecretName: "timescaledb-pgbackrest"
 
+service:
+  primary:
+    type: ClusterIP
+    port: 5432
+    clusterIP: 10.43.126.32
+  replica:
+    type: ClusterIP
+    port: 5432
+    clusterIP: 10.43.135.173
+
+loadBalancer:
+  enabled: false
+
+replicaLoadBalancer:
+  # If not enabled, we still expose the replica's using a so called Headless Service
+  # https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
+  enabled: false
+  port: 5432
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "4000"
+
+pgBouncer:
+  enabled: false
+
 # https://pgstef.github.io/2022/02/23/pgbackrest_preview_backup_bundle.html
 backup:
   enabled: true
@@ -50,10 +77,8 @@ backup:
     repo1-type: s3
     repo1-cipher-type: "none"
     repo1-s3-region: eu1
-    repo1-s3-endpoint: gateway.eu1.storjshare.io
+    repo1-s3-endpoint: gateway.storjshare.io
     repo1-s3-bucket: linole-timescaledb
-    repo1-s3-key: xxx
-    repo1-s3-key-secret: xxx
     bundle-size: 1024MiB
     bundle-limit: 64MiB
     db-exclude: promscale
@@ -69,8 +94,8 @@ backup:
     - name: full-weekly
       type: full
       schedule: "12 02 * * 0"
-    - name: differential-daily
-      type: diff
+    - name: incremental-daily
+      type: incr
       schedule: "12 02 * * 1-6"
 
 bootstrapFromBackup:

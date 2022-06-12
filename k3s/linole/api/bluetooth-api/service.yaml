@@ -4,7 +4,7 @@ metadata:
   name: bluetooth-api
   namespace: linole
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: bluetooth-api
   ports:

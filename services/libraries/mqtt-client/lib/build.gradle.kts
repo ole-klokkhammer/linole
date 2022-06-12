@@ -6,14 +6,12 @@ plugins {
     kotlin("jvm")
 }
 
-version = "1.1.4"
+version = "1.1.13"
 group = "com.linole"
-val gitlabMavenAccessToken: String by project
-val gitlabMavenLinoleUrl: String by project
 
 repositories {
     jcenter()
-    maven { url = uri(gitlabMavenLinoleUrl) }
+    maven { url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_USERNAME")}/linole") }
 }
 
 dependencies {
@@ -25,34 +23,20 @@ dependencies {
 }
 
 publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            artifact("build/libs/lib-$version.jar")
-            artifactId = "mqtt-client"
-            pom.withXml {
-                val dependenciesNode = asNode().appendNode("dependencies")
-                // Iterate over the api dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.api.get().allDependencies.forEach {
-                    println("Appending dependency $it")
-                    val dependencyNode = dependenciesNode.appendNode("dependency")
-                    dependencyNode.appendNode("groupId", it.group)
-                    dependencyNode.appendNode("artifactId", it.name)
-                    dependencyNode.appendNode("version", it.version)
-                }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_USERNAME")}/linole")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
             }
         }
     }
-    repositories {
-        maven {
-            name = "GitLab"
-            url = uri(gitlabMavenLinoleUrl)
-            credentials(HttpHeaderCredentials::class) {
-                name = "Private-Token"
-                value = gitlabMavenAccessToken
-            }
-            authentication {
-                create<HttpHeaderAuthentication>("header")
-            }
+    publications {
+        register<MavenPublication>("gpr") {
+            artifactId = "mqtt-client"
+            from(components["kotlin"])
         }
     }
 }

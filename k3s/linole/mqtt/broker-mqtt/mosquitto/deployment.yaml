@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: broker-mqtt
   namespace: linole
@@ -7,7 +7,6 @@ metadata:
     app: broker-mqtt
 spec:
   replicas: 1
-  serviceName: broker-mqtt
   selector:
     matchLabels:
       app: broker-mqtt
@@ -21,21 +20,16 @@ spec:
         kubernetes.io/arch: arm64
       containers:
         - name: broker-mqtt
-          image: eclipse-mosquitto:2.0.14
+          image: eclipse-mosquitto:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 1883
               name: tcp
           volumeMounts:
-            - name: broker-data
-              mountPath: /mosquitto
-  volumeClaimTemplates:
-    - metadata:
-        name: broker-data
-        namespace: linole
-      spec:
-        accessModes: [ "ReadWriteOnce" ]
-        storageClassName: "longhorn"
-        resources:
-          requests:
-            storage: 500Mi
+            - name: broker-mqtt-config
+              mountPath: /mosquitto/config/mosquitto.conf
+              subPath: mosquitto.conf
+      volumes:
+        - name: broker-mqtt-config
+          configMap:
+            name: broker-mqtt-config

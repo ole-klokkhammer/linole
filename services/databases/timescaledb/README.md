@@ -1,3 +1,3 @@
 #
-* git clone --branch v1.2.5 https://github.com/timescale/timescaledb-docker-ha.git
+* git clone --branch v1.4.0 https://github.com/timescale/timescaledb-docker-ha.git
 * ./publish

@@ -27,7 +27,7 @@ def on_message(client, userdata, msg):
             'Authorization': 'Bearer ' + HOMEASSISTANT_TOKEN
         }
         res = requests.post(
-            'http://homeassistant.mqtt:6102/api/services/notify/mobile_app_pixel_5',
+            'http://homeassistant.linole:6102/api/services/notify/mobile_app_pixel_5',
             json=data,
             headers=headers
         )
