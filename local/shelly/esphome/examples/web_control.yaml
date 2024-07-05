@@ -1,0 +1,28 @@
+esphome:
+  name: entrance_roof
+
+esp8266:
+  board: esp01_1m
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: "GmxvHQeJUEKFqrszFaCd"
+
+ota:
+  - platform: esphome
+    password: "GmxvHQeJUEKFqrszFaCd"
+
+wifi:
+  ssid: "wireless@linole"
+  password: "6sMkVsK5Z3YW"
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Entrance Roof Fallback Hotspot"
+    password: "aUyI18vId2Ue"
+
+captive_portal:
+    

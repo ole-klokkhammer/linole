@@ -1,4 +1,5 @@
-FROM hivemq/hivemq-ce:2021.3
+FROM hivemq/hivemq-ce:latest
+
 ENV HIVEMQ_EXTENSION_DIR=/opt/hivemq/extensions
 ENV HIVEMQ_PLUGINS_DIR=/opt/hivemq/plugins
 ENV HIVEMQ_CONF_DIR=/opt/hivemq/conf

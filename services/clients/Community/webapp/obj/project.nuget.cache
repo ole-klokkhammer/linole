@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "56CTGPMK01DVEMh9/hkAisjLOrH283kthXc+66ybjkmz6kEAZq0eIvc9gf8e43uUyCjGWXGDo61aKePFV4xhRw==",
+  "success": true,
+  "projectFilePath": "/home/ole/workspace/oleklokkhammer/projects/linole/services/clients/Community/Community.csproj",
+  "expectedPackageFiles": [
+    "/home/ole/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.0-rc.1.22427.2/microsoft.aspnetcore.app.ref.7.0.0-rc.1.22427.2.nupkg.sha512"
+  ],
+  "logs": []
+}

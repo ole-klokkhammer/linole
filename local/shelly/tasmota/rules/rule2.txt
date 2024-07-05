@@ -1,0 +1,4 @@
+Rule2
+  ON wifi#disconnected DO Var1 %timestamp% ENDON
+  ON wifi#connected DO Var2 %timestamp% ENDON
+  ON mqtt#connected DO Publish stat/topic/BLACKOUT {"From":"%Var1%","To":"%Var2%"} ENDON

@@ -16,7 +16,7 @@ RUN microdnf update -y \
 RUN mkdir /usr/local/lib/cockroach /cockroach /licenses
 
 
-COPY cockroach.sh cockroach-amd64 cockroach-arm64 /cockroach/
+COPY cockroach.sh cockroach* /cockroach/
 COPY licenses/* /licenses/
 # Install GEOS libraries.
 COPY libgeos.so libgeos_c.so /usr/local/lib/cockroach/

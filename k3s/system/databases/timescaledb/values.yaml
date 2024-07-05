@@ -72,14 +72,17 @@ backup:
     compress-type: lz4
     process-max: 4
     start-fast: "y"
-    repo1-retention-diff: 2
-    repo1-retention-full: 2
+    compress-level: 3
+
     repo1-type: s3
-    repo1-cipher-type: "none"
     repo1-s3-region: eu1
     repo1-s3-endpoint: gateway.storjshare.io
     repo1-s3-bucket: linole-timescaledb
-    bundle-size: 1024MiB
+    repo1-retention-diff: 1
+    repo1-retention-full: 1
+#    repo1-retention-archive: 1
+    repo1-cipher-type: "none"
+    bundle-size: 128MiB
     bundle-limit: 64MiB
     db-exclude: promscale
   pgBackRest:archive-push:
@@ -93,10 +96,7 @@ backup:
   jobs:
     - name: full-weekly
       type: full
-      schedule: "12 02 * * 0"
-    - name: incremental-daily
-      type: incr
-      schedule: "12 02 * * 1-6"
+      schedule: "02 02 * * 0-6"
 
 bootstrapFromBackup:
   enabled: false

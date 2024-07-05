@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    kotlin("jvm")
     id("com.hivemq.extension")
-    kotlin("jvm") version "1.6.20"
 }
 
 group = "com.linole.hivemq"
@@ -21,16 +21,17 @@ hivemqExtension {
 repositories {
     mavenCentral()
     maven {
-        url = uri(System.getenv("GITLAB_MAVEN_LINOLE_URL"))
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/ole-klokkhammer/linole")
         credentials {
-            username = System.getenv("GITLAB_MAVEN_LINOLE_USERNAME")
-            password = System.getenv("GITLAB_MAVEN_LINOLE_PASSWORD")
+            username = System.getenv("GITHUB_USERNAME")
+            password = System.getenv("GITHUB_TOKEN")
         }
     }
 }
 
 dependencies {
-    implementation("com.hivemq:hivemq-extension-sdk:4.6.3")
+    implementation("com.hivemq:hivemq-extension-sdk:_")
 }
 
 tasks.withType<KotlinCompile>() {

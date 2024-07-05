@@ -1,0 +1,6 @@
+
+substitutions:
+  device_name: shelly1
+
+##### Include common configuration for shelly
+<<: !include common/devboards/esp32/esp32_common.yaml
