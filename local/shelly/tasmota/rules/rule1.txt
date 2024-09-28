@@ -1,9 +1,0 @@
-Backlog SwitchMode0 11; SetOption32 10; DimmerStep 5; Rule1 1;
-
-Rule1
-on system#boot do var1 0 ENDON
-on system#boot do var2 0 ENDON
-on switch1#state=2 do POWER 1 ENDON
-on switch2#state=2 do POWER 0 ENDON
-on switch1#state=4 do Dimmer + ENDON
-on switch2#state=4 do Dimmer - ENDON
